@@ -1,20 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Marcellus } from "next/font/google";
+// Fonts are bundled from npm (Fontsource) instead of next/font/google, so the
+// build never depends on reaching Google Fonts (which failed on Vercel).
+import "@fontsource/marcellus/latin.css";
+import "@fontsource/marcellus/latin-ext.css";
+import "@fontsource-variable/jost/wght.css";
 import "./globals.css";
-
-const marcellus = Marcellus({
-  weight: "400",
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const jost = Jost({
-  subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500"],
-  variable: "--font-body",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Behsat Hakan Sağır · Stajyer Avukat",
@@ -35,7 +25,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${marcellus.variable} ${jost.variable}`}>
+    <html lang="tr">
       <body>{children}</body>
     </html>
   );

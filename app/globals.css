@@ -14,7 +14,7 @@
   --line-dark: rgba(201, 165, 114, 0.28);
 
   --font-display: "Marcellus", Georgia, serif;
-  --font-body: "Jost", system-ui, sans-serif;
+  --font-body: "Jost Variable", "Jost", system-ui, sans-serif;
 
   --container: 1120px;
   --gutter: clamp(16px, 4vw, 40px);
