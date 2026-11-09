@@ -294,9 +294,45 @@ dd {
 /* Hakkımda */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
   gap: clamp(32px, 6vw, 80px);
   align-items: start;
+}
+/* Fotoğraf: kartvizitteki altın hatları yansıtan kaydırılmış çerçeve */
+.portrait {
+  position: relative;
+  margin: 0 14px 14px 0;
+}
+.portrait::after {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border: 1px solid var(--gold);
+  pointer-events: none;
+}
+.portrait img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: var(--ivory-alt);
+}
+.about-body .highlights {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 40px;
+  border-bottom: 1px solid var(--line-light);
+}
+.about-body .highlights > div {
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 0;
+}
+.about-body .highlights > div + div {
+  border-left: 1px solid var(--line-light);
+  padding-left: 20px;
 }
 .about-text p + p {
   margin-top: 1.1em;
@@ -613,11 +649,6 @@ dd {
   stroke-width: 16;
   margin-bottom: 14px;
 }
-.footer-note {
-  margin-top: 6px;
-  opacity: 0.6;
-  font-size: 13px;
-}
 
 /* ---------- Duyarlı yerleşim ---------- */
 @media (max-width: 960px) {
@@ -682,6 +713,16 @@ dd {
   .about-grid,
   .edu-card {
     grid-template-columns: 1fr;
+  }
+  .portrait {
+    width: min(calc(100% - 14px), 380px);
+    justify-self: center;
+  }
+  .about-body .highlights dt {
+    font-size: 32px;
+  }
+  .about-body .highlights > div + div {
+    padding-left: 14px;
   }
   .edu-gpa {
     align-items: flex-start;

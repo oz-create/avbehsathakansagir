@@ -116,19 +116,31 @@ export default function Home() {
           <div className="container">
             <SectionHead index="I" title="Hakkımda" />
             <div className="about-grid">
-              <div className="about-text">
-                {p.about.map((t, i) => (
-                  <p key={i}>{t}</p>
-                ))}
+              <figure className="portrait">
+                <img
+                  src="/behsat-hakan-sagir.webp"
+                  alt={`${p.name}, avukat cübbesiyle İstanbul Üniversitesi'nde`}
+                  width={1200}
+                  height={1600}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+              <div className="about-body">
+                <div className="about-text">
+                  {p.about.map((t, i) => (
+                    <p key={i}>{t}</p>
+                  ))}
+                </div>
+                <dl className="highlights">
+                  {p.highlights.map((h) => (
+                    <div key={h.label}>
+                      <dt>{h.value}</dt>
+                      <dd>{h.label}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
-              <dl className="highlights">
-                {p.highlights.map((h) => (
-                  <div key={h.label}>
-                    <dt>{h.value}</dt>
-                    <dd>{h.label}</dd>
-                  </div>
-                ))}
-              </dl>
             </div>
           </div>
         </section>
@@ -276,10 +288,6 @@ export default function Home() {
         <Scales className="footer-mark" />
         <p>
           © {new Date().getFullYear()} {p.name} · {p.title}
-        </p>
-        <p className="footer-note">
-          Bu site yalnızca tanıtım ve bilgilendirme amaçlıdır; hukuki danışmanlık teklifi niteliği
-          taşımaz.
         </p>
       </footer>
     </>
